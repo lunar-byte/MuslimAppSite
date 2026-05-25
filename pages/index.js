@@ -57,22 +57,49 @@ export default function Home() {
               Уведомим вас, когда приложение будет готово
             </p>
           </div>
-
-          {/* Пример изображения с lazy loading */}
-          {/*
-          <div style={{ marginTop: '60px' }}>
-            <Image
-              src="/hero-phone.png"  // Положите файл в папку public/
-              alt="Waqti.app приложение на телефоне"
-              width={300}
-              height={600}
-              priority  // Удалите priority для изображений ниже скролла (они будут lazy)
-              style={{ objectFit: 'contain' }}
-            />
-          </div>
-          */}
         </div>
       </main>
+
+      {/* Features Section */}
+      <section className="features" id="features">
+        <div className="features-container">
+          <h2 className="section-title">Что внутри Waqti.app</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <h3>📖 Чтение Корана</h3>
+              <p>Полный текст Корана с удобной навигацией и возможностью закладок</p>
+            </div>
+            <div className="feature-card">
+              <h3>🎯 Ведение целей</h3>
+              <p>Ставьте духовные и личные цели, отслеживайте прогресс и достигайте большего</p>
+            </div>
+            <div className="feature-card">
+              <h3>✅ Привычки</h3>
+              <p>Формируйте полезные привычки, например ежедневное чтение Корана или намаз</p>
+            </div>
+            <div className="feature-card">
+              <h3>🧭 Поиск Каабы</h3>
+              <p>Точное определение направления на Каабу (кибла) в любой точке мира</p>
+            </div>
+            <div className="feature-card">
+              <h3>📚 Хадисы каждый день</h3>
+              <p>Ежедневные хадисы для вдохновения и углубления знаний</p>
+            </div>
+            <div className="feature-card">
+              <h3>⏰ Время намаза</h3>
+              <p>Точное время намаза с напоминаниями и созывом (азан)</p>
+            </div>
+            <div className="feature-card">
+              <h3>🤲 Дау</h3>
+              <p>Большая коллекция дуа на любое событие и жизненную ситуацию</p>
+            </div>
+            <div className="feature-card no-ads">
+              <h3>🚫 Нет рекламы</h3>
+              <p>Полностью бесплатное приложение без рекламы — только чистый опыт</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer className="footer">
         <p>© 2024 Waqti.app — Все права защищены</p>
