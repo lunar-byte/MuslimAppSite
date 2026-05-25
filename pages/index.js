@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -56,6 +57,20 @@ export default function Home() {
               Уведомим вас, когда приложение будет готово
             </p>
           </div>
+
+          {/* Пример изображения с lazy loading */}
+          {/*
+          <div style={{ marginTop: '60px' }}>
+            <Image
+              src="/hero-phone.png"  // Положите файл в папку public/
+              alt="Waqti.app приложение на телефоне"
+              width={300}
+              height={600}
+              priority  // Удалите priority для изображений ниже скролла (они будут lazy)
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+          */}
         </div>
       </main>
 
