@@ -3,26 +3,47 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SetupScreen() {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(null);
+  const [decision, setDecision] = useState(null); // 'show' | 'redirect'
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    const isMobileDevice = mobileRegex.test(userAgent);
-    setIsMobile(isMobileDevice);
-  }, []);
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+    const checkStandalone = () => {
+      try {
+        if (window.navigator.standalone === true) return true;
+        if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return true;
+        if (window.matchMedia && window.matchMedia('(display-mode: fullscreen)').matches) return true;
+        return false;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    const isStandalone = checkStandalone();
+
+    // Показываем экран настройки только если это iOS и не standalone (запущен в Safari)
+    if (isIOS && !isStandalone) {
+      setDecision('show');
+    } else {
+      setDecision('redirect');
+    }
+  }, [navigate]);
 
   useEffect(() => {
-    if (isMobile === true) {
+    if (decision === 'redirect') {
       navigate('/intro', { replace: true });
     }
-  }, [isMobile, navigate]);
+  }, [decision, navigate]);
 
-  if (isMobile === null) {
+  if (decision === null) {
     return <div style={{ textAlign: 'center', marginTop: '100px' }}>Загрузка...</div>;
   }
 
-  // Desktop
+  if (decision !== 'show') {
+    return null;
+  }
+
   return (
     <div style={{ textAlign: 'center', marginTop: '100px', padding: '20px' }}>
       <h1>Настройте приложение</h1>
