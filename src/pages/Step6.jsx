@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StepLayout from '../components/StepLayout';
 import useSabrSession from '../hooks/useSabrSession';
 
@@ -7,7 +8,6 @@ export default function Step6() {
   const step1Emotions = session.step1.emotions;
   const rerating = session.step6.rerating;
 
-  // Initialize rerating from step1 if empty
   useEffect(() => {
     if (step1Emotions.length > 0 && rerating.length === 0) {
       const initialRerating = step1Emotions.map(e => ({
@@ -32,31 +32,27 @@ export default function Step6() {
 
   const handleComplete = () => {
     const completedAt = new Date().toISOString();
-    // Update current session
     updateSession({ completedAt });
-    // Save to history
     const historyJson = localStorage.getItem('sabr_history');
     let history = [];
     if (historyJson) {
       try { history = JSON.parse(historyJson); } catch (e) { console.error(e); }
     }
-    // Push a copy of current session along with completedAt
     history.push({ ...session, completedAt });
     localStorage.setItem('sabr_history', JSON.stringify(history));
-    // Navigation will happen automatically after onNext returns
   };
 
   return (
     <StepLayout currentStep={6} onNext={handleComplete}>
       <div>
-        <h2>Шаг 6: Завершение</h2>
+        <h2>Step 6: Completion</h2>
 
         <div style={{ marginBottom: '20px' }}>
-          <h3>Повторная оценка эмоций</h3>
+          <h3>Re-evaluation of emotions</h3>
           {rerating && rerating.length > 0 ? (
             rerating.map(({ name, before, after }) => (
               <div key={name} style={{ marginBottom: '15px' }}>
-                <p><strong>{name}</strong>: было {before}</p>
+                <p><strong>{name}</strong>: was {before}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <input
                     type="range"
@@ -71,27 +67,28 @@ export default function Step6() {
               </div>
             ))
           ) : (
-            <p>Нет данных для повторной оценки.</p>
+            <p>No data for re-evaluation.</p>
           )}
         </div>
 
         <div>
           <label htmlFor="finalNote" style={{ display: 'block', marginBottom: '8px' }}>
-            Заметка себе
+            Note to self
           </label>
           <textarea
             id="finalNote"
             value={session.step6?.finalNote || ''}
             onChange={handleFinalNoteChange}
-            rows={4}
             style={{
               width: '100%',
-              padding: '8px',
+              height: 120,
+              padding: '12px 15px',
               boxSizing: 'border-box',
               borderRadius: '4px',
-              border: '1px solid #ccc'
+              border: '1px solid #ccc',
+              resize: 'none',
             }}
-            placeholder="Любые дополнительные мысли..."
+            placeholder="Any additional thoughts..."
           />
         </div>
       </div>

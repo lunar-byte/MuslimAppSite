@@ -40,13 +40,13 @@ export const borderRadius = {
 };
 
 export const typography = {
-  display: { fontSize: 28, fontWeight: 700, lineHeight: 34 },
-  heading: { fontSize: 24, fontWeight: 700, lineHeight: 30 },
-  subheading: { fontSize: 18, fontWeight: 600, lineHeight: 24 },
-  bodyLarge: { fontSize: 18, fontWeight: 500, lineHeight: 24 },
-  body: { fontSize: 16, fontWeight: 500, lineHeight: 24 },
-  bodySmall: { fontSize: 14, fontWeight: 500, lineHeight: 20 },
-  caption: { fontSize: 12, fontWeight: 500, lineHeight: 16 },
+  display: { fontSize: 28, fontWeight: 700, lineHeight: 1 },
+  heading: { fontSize: 24, fontWeight: 700, lineHeight: 1 },
+  subheading: { fontSize: 18, fontWeight: 600, lineHeight: 1 },
+  bodyLarge: { fontSize: 18, fontWeight: 500, lineHeight: 1 },
+  body: { fontSize: 16, fontWeight: 500, lineHeight: 1 },
+  bodySmall: { fontSize: 14, fontWeight: 500, lineHeight: 1 },
+  caption: { fontSize: 12, fontWeight: 500, lineHeight: 1 },
 };
 
 export const shadows = {

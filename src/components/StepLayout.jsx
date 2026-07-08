@@ -23,7 +23,7 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
 
   const backButtonStyle = {
     flex: 1,
-    padding: `${spacing.md} ${spacing.lg}`,
+    padding: `${spacing.md}px ${spacing.lg}px`,
     borderRadius: borderRadius.xxxl,
     backgroundColor: colors.grayVeryLight,
     color: colors.blackNear,
@@ -43,7 +43,7 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
         gap: spacing.md
       }}>
         <button onClick={handleBack} style={backButtonStyle}>
-          Назад
+          Back
         </button>
         <button
           onClick={handleNext}
@@ -55,7 +55,7 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
             cursor: isNextDisabled ? 'not-allowed' : 'pointer'
           }}
         >
-          Далее
+          Next
         </button>
       </div>
     </div>

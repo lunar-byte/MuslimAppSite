@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSabrSession from '../hooks/useSabrSession';
 
 export default function History() {
   const [history, setHistory] = useState([]);
@@ -53,9 +54,9 @@ export default function History() {
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>История практик</h1>
+      <h1>Practice History</h1>
       {history.length === 0 ? (
-        <p>Нет завершённых практик.</p>
+        <p>No completed practices.</p>
       ) : (
         history.map((session, index) => {
           const { createdAt, step1, step6, step4, step5 } = session;
@@ -71,13 +72,13 @@ export default function History() {
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div style={{ flex: 1, cursor: 'pointer' }} onClick={() => handleEntryClick(index)}>
-                  <p><strong>Дата:</strong> {formatDate(createdAt)}</p>
-                  <p><strong>Триггер:</strong> {step1.trigger || '—'}</p>
-                  <p><strong>Эмоция:</strong> {emotionSummary}</p>
+                  <p><strong>Date:</strong> {formatDate(createdAt)}</p>
+                  <p><strong>Trigger:</strong> {step1.trigger || '—'}</p>
+                  <p><strong>Emotion:</strong> {emotionSummary}</p>
                   {isExpanded && (
                     <div style={{ marginTop: '15px', borderTop: '1px solid #eee', paddingTop: '10px' }}>
-                      <h4>Полное резюме</h4>
-                      <p><strong>Эмоции:</strong></p>
+                      <h4>Full Summary</h4>
+                      <p><strong>Emotions:</strong></p>
                       <ul>
                         {step1.emotions?.map(e => {
                           const before = e.intensity;
@@ -89,10 +90,10 @@ export default function History() {
                           return <li key={e.name}>{e.name}: {before} → {after}</li>;
                         })}
                       </ul>
-                      <p><strong>Имя Аллаха:</strong> {step4?.allahName || '—'}</p>
-                      <p><strong>Намерение:</strong> {step5?.niyyah || '—'}</p>
-                      <p><strong>Один шаг:</strong> {step5?.oneStep || '—'}</p>
-                      <p><strong>Заметка:</strong> {step6?.finalNote || '—'}</p>
+                      <p><strong>Allah's Name:</strong> {step4?.allahName || '—'}</p>
+                      <p><strong>Intention:</strong> {step5?.niyyah || '—'}</p>
+                      <p><strong>One step:</strong> {step5?.oneStep || '—'}</p>
+                      <p><strong>Note:</strong> {step6?.finalNote || '—'}</p>
                     </div>
                   )}
                 </div>
@@ -112,7 +113,7 @@ export default function History() {
                     cursor: 'pointer'
                   }}
                 >
-                  Удалить
+                  Delete
                 </button>
               </div>
             </div>
@@ -132,7 +133,7 @@ export default function History() {
           cursor: 'pointer'
         }}
       >
-        На главную
+        Back to Home
       </button>
     </div>
   );

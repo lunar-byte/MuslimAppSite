@@ -1,12 +1,13 @@
 import StepLayout from '../components/StepLayout';
 import useSabrSession from '../hooks/useSabrSession';
+import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const ALLAH_NAMES = [
-  { key: 'ar-rahman', name: 'Ар-Рахман', arabic: 'الرَّحْمَنُ', meaning: 'Милостивый' },
-  { key: 'al-khalim', name: 'Аль-Халим', arabic: 'الْحَلِيمُ', meaning: 'Кроткий' },
-  { key: 'as-sabur', name: 'Ас-Сабур', arabic: 'الصَّبُورُ', meaning: 'Терпеливый' },
-  { key: 'ash-shakur', name: 'Аш-Шакур', arabic: 'الشَّكُورُ', meaning: 'Благодарный' },
-  { key: 'al-wadud', name: 'Аль-Вадуд', arabic: 'الْوَدُودُ', meaning: 'Любящий' }
+  { key: 'ar-rahman', name: 'Ar-Rahman', arabic: 'الرَّحْمَنُ', meaning: 'The Most Merciful' },
+  { key: 'al-khalim', name: 'Al-Halim', arabic: 'الْحَلِيمُ', meaning: 'The Forbearing' },
+  { key: 'as-sabur', name: 'As-Sabur', arabic: 'الصَّبُورُ', meaning: 'The Patient' },
+  { key: 'ash-shakur', name: 'Ash-Shakur', arabic: 'الشَّكُورُ', meaning: 'The Appreciative' },
+  { key: 'al-wadud', name: 'Al-Wadud', arabic: 'الْوَدُودُ', meaning: 'The Loving' }
 ];
 
 export default function Step4() {
@@ -30,8 +31,8 @@ export default function Step4() {
   return (
     <StepLayout currentStep={4}>
       <div>
-        <h2>Шаг 4: Имена Аллаха</h2>
-        <p style={{ marginBottom: '15px' }}>Какое Имя Аллаха резонирует сейчас?</p>
+        <h2>Step 4: Names of Allah</h2>
+        <p style={{ marginBottom: '15px' }}>Which Name of Allah resonates right now?</p>
 
         <div style={{
           display: 'grid',
@@ -74,12 +75,12 @@ export default function Step4() {
               boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}
           >
-            <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Другое</div>
+            <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Other</div>
             <input
               type="text"
               value={selectedPredefined ? '' : allahName}
               onChange={handleNameChange}
-              placeholder="Введите имя..."
+              placeholder="Enter name..."
               style={{
                 width: '100%',
                 padding: '8px',
@@ -109,21 +110,22 @@ export default function Step4() {
 
         <div>
           <label htmlFor="nameIntention" style={{ display: 'block', marginBottom: '8px' }}>
-            В честь этого Имени я...
+            In honor of this Name I...
           </label>
           <textarea
             id="nameIntention"
             value={nameIntention}
             onChange={handleIntentionChange}
-            rows={4}
             style={{
               width: '100%',
-              padding: '8px',
+              height: 120,
+              padding: '12px 15px',
               boxSizing: 'border-box',
               borderRadius: '4px',
-              border: '1px solid #ccc'
+              border: '1px solid #ccc',
+              resize: 'none',
             }}
-            placeholder="Ваше намерение..."
+            placeholder="Your intention..."
           />
         </div>
       </div>

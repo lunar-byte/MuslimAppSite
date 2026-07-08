@@ -16,34 +16,33 @@ export default function SabrComplete() {
 
   const { step1, step2, step3, step4, step5, step6 } = session;
 
-  // Build emotion dynamic string from rerating or step1
   const emotionLines = (step6?.rerating || []).map(({ name, before, after }) => `${name}: ${before} → ${after}`);
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
-      <h1>Практика завершена</h1>
+      <h1>Practice Completed</h1>
 
       <div style={{ textAlign: 'left', marginTop: '30px' }}>
-        <h2>Резюме сессии</h2>
+        <h2>Session Summary</h2>
 
-        <p><strong>Триггер:</strong> {step1.trigger || '—'}</p>
+        <p><strong>Trigger:</strong> {step1.trigger || '—'}</p>
 
         <div>
-          <strong>Эмоции и их изменение:</strong>
+          <strong>Emotions and their change:</strong>
           {emotionLines.length > 0 ? (
             <ul>
               {emotionLines.map((line, i) => <li key={i}>{line}</li>)}
             </ul>
           ) : (
-            <p>Нет данных</p>
+            <p>No data</p>
           )}
         </div>
 
-        <p><strong>Имя Аллаха:</strong> {step4.allahName || '—'}</p>
+        <p><strong>Allah's Name:</strong> {step4.allahName || '—'}</p>
 
-        <p><strong>Намерение (ниет):</strong> {step5.niyyah || '—'}</p>
+        <p><strong>Intention (niyyah):</strong> {step5.niyyah || '—'}</p>
 
-        <p><strong>Один маленький шаг:</strong> {step5.oneStep || '—'}</p>
+        <p><strong>One small step:</strong> {step5.oneStep || '—'}</p>
       </div>
 
       <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
@@ -59,7 +58,7 @@ export default function SabrComplete() {
             borderRadius: '6px'
           }}
         >
-          Новая практика
+          New Practice
         </button>
         <button
           onClick={handleHistory}
@@ -73,7 +72,7 @@ export default function SabrComplete() {
             borderRadius: '6px'
           }}
         >
-          История практик
+          Practice History
         </button>
       </div>
     </div>

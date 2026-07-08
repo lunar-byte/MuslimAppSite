@@ -3,21 +3,22 @@ import useSabrSession from '../hooks/useSabrSession';
 import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const EMOTIONS = [
-  'Подавлен',
-  'Грустно',
-  'Испуган',
-  'Злость',
-  'Обижен',
-  'Разочарован',
-  'Тревога',
-  'Онемение',
-  'Беспомощность',
-  'Растерян'
+  'Depressed',
+  'Sad',
+  'Scared',
+  'Angry',
+  'Hurt',
+  'Disappointed',
+  'Anxious',
+  'Numb',
+  'Helpless',
+  'Confused'
 ];
 
 const textareaStyle = {
   width: '100%',
-  padding: `${spacing.md}px ${spacing.lg}px`,
+  height: 120,
+  padding: '12px 15px',
   boxSizing: 'border-box',
   borderRadius: borderRadius.md,
   border: 'none',
@@ -25,7 +26,7 @@ const textareaStyle = {
   fontSize: typography.body.fontSize,
   color: colors.blackNear,
   fontFamily: 'system-ui, -apple-system, sans-serif',
-  resize: 'vertical',
+  resize: 'none',
 };
 
 const labelStyle = {
@@ -66,25 +67,24 @@ export default function Step1() {
     <StepLayout currentStep={1} isNextDisabled={isNextDisabled}>
       <div>
         <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
-          Шаг 1: Триггер и эмоции
+          Step 1: Trigger and Emotions
         </h2>
         <div style={{ marginBottom: spacing.lg }}>
           <label htmlFor="trigger" style={labelStyle}>
-            Что произошло?
+            What happened?
           </label>
           <textarea
             id="trigger"
             value={trigger}
             onChange={handleTriggerChange}
-            rows={3}
             style={textareaStyle}
-            placeholder="Опишите ситуацию..."
+            placeholder="Describe the situation..."
           />
         </div>
 
         <div>
           <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
-            Какие эмоции вы чувствуете?
+            What emotions are you feeling?
           </p>
           {EMOTIONS.map(emotion => {
             const isSelected = emotions.some(e => e.name === emotion);

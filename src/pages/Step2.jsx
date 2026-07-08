@@ -4,7 +4,8 @@ import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const textareaStyle = {
   width: '100%',
-  padding: `${spacing.md} ${spacing.lg}`,
+  height: 120,
+  padding: '12px 15px',
   boxSizing: 'border-box',
   borderRadius: borderRadius.md,
   border: 'none',
@@ -12,7 +13,7 @@ const textareaStyle = {
   fontSize: typography.body.fontSize,
   color: colors.blackNear,
   fontFamily: 'system-ui, -apple-system, sans-serif',
-  resize: 'vertical',
+  resize: 'none',
 };
 
 const labelStyle = {
@@ -23,7 +24,7 @@ const labelStyle = {
 };
 
 const buttonToggleBase = {
-  padding: `${spacing.sm} ${spacing.lg}`,
+  padding: `${spacing.sm}px ${spacing.lg}px`,
   borderRadius: borderRadius.md,
   borderWidth: 1,
   borderStyle: 'solid',
@@ -54,43 +55,41 @@ export default function Step2() {
     <StepLayout currentStep={2}>
       <div>
         <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
-          Шаг 2: История за эмоцией
+          Step 2: Story Behind the Emotion
         </h2>
         <div style={{ marginBottom: spacing.lg }}>
           <label htmlFor="negativeThoughts" style={labelStyle}>
-            Негативные мысли в голове
+            Negative thoughts in your head
           </label>
           <textarea
             id="negativeThoughts"
             value={negativeThoughts}
             onChange={handleNegativeThoughtsChange}
-            rows={4}
             style={textareaStyle}
-            placeholder="Опишите, что крутится в голове..."
+            placeholder="Describe what's spinning in your head..."
           />
         </div>
 
         <div style={{ marginBottom: spacing.lg }}>
           <label htmlFor="whoBecome" style={labelStyle}>
-            Кем я становлюсь с этими мыслями?
+            Who am I becoming with these thoughts?
           </label>
           <textarea
             id="whoBecome"
             value={whoBecome}
             onChange={handleWhoBecomeChange}
-            rows={4}
             style={textareaStyle}
-            placeholder="Как эти мысли влияют на вас? Кем вы становитесь?"
+            placeholder="How do these thoughts affect you? Who are you becoming?"
           />
         </div>
 
         <div>
           <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
-            Эти мысли всегда правда?
+            Are these thoughts always true?
           </p>
           <div style={{ display: 'flex', gap: spacing.sm, flexWrap: 'wrap' }}>
-            {['Да', 'Может быть', 'Нет'].map(option => {
-              const value = option === 'Да' ? 'yes' : option === 'Может быть' ? 'maybe' : 'no';
+            {['Yes', 'Maybe', 'No'].map(option => {
+              const value = option === 'Yes' ? 'yes' : option === 'Maybe' ? 'maybe' : 'no';
               const isActive = thoughtsTruth === value;
               return (
                 <button

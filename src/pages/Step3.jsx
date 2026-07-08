@@ -3,26 +3,27 @@ import useSabrSession from '../hooks/useSabrSession';
 import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const ALTERNATIVE_OPTIONS = [
-  'Это может быть не так плохо, как кажется',
-  'Их намерение могло быть не плохим',
-  'Они могут сами через что-то проходить',
-  'У меня нет всей картины',
-  'Это не личное',
-  'Возможно, Аллах защищает меня'
+  'This may not be as bad as it seems',
+  'Their intention may not have been bad',
+  'They may be going through something themselves',
+  'I don\'t have the full picture',
+  'It\'s not personal',
+  'Perhaps Allah is protecting me'
 ];
 
 const MUHASABA_OPTIONS = [
-  'Предположения',
-  'Гордость',
-  'Обиду',
-  'Нетерпение',
-  'Резкость',
-  'Зависть'
+  'Assumptions',
+  'Pride',
+  'Resentment',
+  'Impatience',
+  'Harshness',
+  'Envy'
 ];
 
 const textareaStyle = {
   width: '100%',
-  padding: `${spacing.md} ${spacing.lg}`,
+  height: 120,
+  padding: '12px 15px',
   boxSizing: 'border-box',
   borderRadius: borderRadius.md,
   border: 'none',
@@ -30,7 +31,7 @@ const textareaStyle = {
   fontSize: typography.body.fontSize,
   color: colors.blackNear,
   fontFamily: 'system-ui, -apple-system, sans-serif',
-  resize: 'vertical',
+  resize: 'none',
 };
 
 const labelStyle = {
@@ -70,12 +71,12 @@ export default function Step3() {
     <StepLayout currentStep={3}>
       <div>
         <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
-          Шаг 3: Расширь сердце
+          Step 3: Expand Your Heart
         </h2>
 
         <div style={{ marginBottom: spacing.lg }}>
           <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
-            Другие объяснения
+            Other explanations
           </p>
           {ALTERNATIVE_OPTIONS.map(option => (
             <div key={option} style={{ marginBottom: spacing.xs }}>
@@ -93,7 +94,7 @@ export default function Step3() {
 
         <div style={{ marginBottom: spacing.lg }}>
           <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
-            5 перспектив благодарности
+            5 gratitude perspectives
           </p>
           {gratitude.map((item, index) => (
             <div key={index} style={{ marginBottom: spacing.sm }}>
@@ -104,9 +105,8 @@ export default function Step3() {
                 id={`gratitude-${index}`}
                 value={item}
                 onChange={(e) => handleGratitudeChange(index, e.target.value)}
-                rows={2}
                 style={textareaStyle}
-                placeholder={`Перспектива ${index + 1}`}
+                placeholder={`Perspective ${index + 1}`}
               />
             </div>
           ))}
@@ -114,7 +114,7 @@ export default function Step3() {
 
         <div>
           <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
-            Что нужно очистить в сердце? (мухасаба)
+            What needs to be cleansed in the heart? (muhasaba)
           </p>
           {MUHASABA_OPTIONS.map(item => (
             <div key={item} style={{ marginBottom: spacing.xs }}>
