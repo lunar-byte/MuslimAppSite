@@ -1,25 +1,23 @@
 import { useNavigate } from 'react-router-dom';
+import { container, buttonPrimary, typography, colors, spacing } from '../styles/theme';
 
 export default function SabrIntro() {
   const navigate = useNavigate();
+  const wrapperStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  };
   return (
-    <div style={{
-      textAlign: 'center',
-      marginTop: '100px',
-      padding: '20px'
-    }}>
-      <h1 style={{ marginBottom: '40px' }}>Sabr</h1>
+    <div style={{ ...container, ...wrapperStyle }}>
+      <h1 style={{ ...typography.heading, color: colors.blackNear, marginBottom: spacing.xxl }}>
+        Sabr
+      </h1>
       <button
         onClick={() => navigate('/step/1')}
-        style={{
-          padding: '16px 32px',
-          fontSize: '18px',
-          cursor: 'pointer',
-          backgroundColor: '#2196F3',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px'
-        }}
+        style={buttonPrimary}
       >
         Начать практику
       </button>
