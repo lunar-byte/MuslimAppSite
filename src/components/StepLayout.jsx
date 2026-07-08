@@ -18,11 +18,7 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
   };
 
   const handleBack = () => {
-    if (currentStep === 1) {
-      navigate('/');
-    } else {
-      navigate(-1);
-    }
+    navigate(-1);
   };
 
   return (

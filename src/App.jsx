@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import SetupScreen from './pages/SetupScreen';
 import SabrIntro from './pages/SabrIntro';
 import Step1 from './pages/Step1';
 import Step2 from './pages/Step2';
@@ -12,7 +13,8 @@ import History from './pages/History';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<SabrIntro />} />
+      <Route path="/" element={<SetupScreen />} />
+      <Route path="/intro" element={<SabrIntro />} />
       <Route path="/step/1" element={<Step1 />} />
       <Route path="/step/2" element={<Step2 />} />
       <Route path="/step/3" element={<Step3 />} />
