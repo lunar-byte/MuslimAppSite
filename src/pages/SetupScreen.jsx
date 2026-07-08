@@ -7,7 +7,7 @@ export default function SetupScreen() {
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
     const checkStandalone = () => {
       try {
@@ -22,8 +22,8 @@ export default function SetupScreen() {
 
     const isStandalone = checkStandalone();
 
-    // Показываем экран настройки только если это iOS и не standalone (запущен в Safari)
-    if (isIOS && !isStandalone) {
+    // Показываем экран настройки только если это мобильный браузер (не standalone)
+    if (isMobile && !isStandalone) {
       setDecision('show');
     } else {
       setDecision('redirect');
