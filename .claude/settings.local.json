@@ -4,7 +4,10 @@
       "Bash(npm install:*)",
       "Bash(npm run:*)",
       "Bash(rm -rf pages)",
-      "Bash(rm -f next.config.js)"
+      "Bash(rm -f next.config.js)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)"
     ]
   }
 }

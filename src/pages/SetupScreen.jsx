@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { container, buttonPrimary, typography, colors, spacing } from '../styles/theme';
 
 export default function SetupScreen() {
   const navigate = useNavigate();

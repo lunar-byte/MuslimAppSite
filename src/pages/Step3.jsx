@@ -1,5 +1,6 @@
 import StepLayout from '../components/StepLayout';
 import useSabrSession from '../hooks/useSabrSession';
+import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const ALTERNATIVE_OPTIONS = [
   'Это может быть не так плохо, как кажется',
@@ -18,6 +19,26 @@ const MUHASABA_OPTIONS = [
   'Резкость',
   'Зависть'
 ];
+
+const textareaStyle = {
+  width: '100%',
+  padding: `${spacing.md} ${spacing.lg}`,
+  boxSizing: 'border-box',
+  borderRadius: borderRadius.md,
+  border: 'none',
+  backgroundColor: colors.grayVeryLight,
+  fontSize: typography.body.fontSize,
+  color: colors.blackNear,
+  fontFamily: 'system-ui, -apple-system, sans-serif',
+  resize: 'vertical',
+};
+
+const labelStyle = {
+  display: 'block',
+  marginBottom: spacing.xs,
+  ...typography.bodySmall,
+  color: colors.grayDark,
+};
 
 export default function Step3() {
   const { session, updateStep } = useSabrSession();
@@ -48,29 +69,35 @@ export default function Step3() {
   return (
     <StepLayout currentStep={3}>
       <div>
-        <h2>Шаг 3: Расширь сердце</h2>
+        <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
+          Шаг 3: Расширь сердце
+        </h2>
 
-        <div style={{ marginBottom: '20px' }}>
-          <p style={{ marginBottom: '10px' }}>Другие объяснения</p>
+        <div style={{ marginBottom: spacing.lg }}>
+          <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
+            Другие объяснения
+          </p>
           {ALTERNATIVE_OPTIONS.map(option => (
-            <div key={option} style={{ marginBottom: '5px' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div key={option} style={{ marginBottom: spacing.xs }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: spacing.xs }}>
                 <input
                   type="checkbox"
                   checked={alternatives.includes(option)}
                   onChange={() => toggleAlternative(option)}
                 />
-                <span>{option}</span>
+                <span style={{ ...typography.body, color: colors.blackNear }}>{option}</span>
               </label>
             </div>
           ))}
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
-          <p style={{ marginBottom: '10px' }}>5 перспектив благодарности</p>
+        <div style={{ marginBottom: spacing.lg }}>
+          <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
+            5 перспектив благодарности
+          </p>
           {gratitude.map((item, index) => (
-            <div key={index} style={{ marginBottom: '8px' }}>
-              <label htmlFor={`gratitude-${index}`} style={{ display: 'block', marginBottom: '4px' }}>
+            <div key={index} style={{ marginBottom: spacing.sm }}>
+              <label htmlFor={`gratitude-${index}`} style={labelStyle}>
                 {index + 1}.
               </label>
               <textarea
@@ -78,13 +105,7 @@ export default function Step3() {
                 value={item}
                 onChange={(e) => handleGratitudeChange(index, e.target.value)}
                 rows={2}
-                style={{
-                  width: '100%',
-                  padding: '8px',
-                  boxSizing: 'border-box',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc'
-                }}
+                style={textareaStyle}
                 placeholder={`Перспектива ${index + 1}`}
               />
             </div>
@@ -92,16 +113,18 @@ export default function Step3() {
         </div>
 
         <div>
-          <p style={{ marginBottom: '10px' }}>Что нужно очистить в сердце? (мухасаба)</p>
+          <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
+            Что нужно очистить в сердце? (мухасаба)
+          </p>
           {MUHASABA_OPTIONS.map(item => (
-            <div key={item} style={{ marginBottom: '5px' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div key={item} style={{ marginBottom: spacing.xs }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: spacing.xs }}>
                 <input
                   type="checkbox"
                   checked={muhasaba.includes(item)}
                   onChange={() => toggleMuhasaba(item)}
                 />
-                <span>{item}</span>
+                <span style={{ ...typography.body, color: colors.blackNear }}>{item}</span>
               </label>
             </div>
           ))}

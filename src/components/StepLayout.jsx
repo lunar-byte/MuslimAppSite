@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
+import { container, buttonPrimary, colors, spacing } from '../styles/theme';
 
 export default function StepLayout({ currentStep, children, isNextDisabled = false, onNext }) {
   const navigate = useNavigate();
@@ -22,26 +23,22 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
   };
 
   return (
-    <div style={{
-      padding: '20px',
-      maxWidth: '600px',
-      margin: '0 auto',
-      minHeight: '100vh',
-      boxSizing: 'border-box'
-    }}>
+    <div style={container}>
       <ProgressBar currentStep={currentStep} totalSteps={6} />
-      <div style={{ marginBottom: '20px' }}>{children}</div>
+      <div style={{ marginBottom: spacing.lg }}>{children}</div>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
-        gap: '10px'
+        gap: spacing.md
       }}>
         <button
           onClick={handleBack}
           style={{
-            padding: '12px 24px',
-            fontSize: '16px',
-            cursor: 'pointer',
+            ...buttonPrimary,
+            backgroundColor: colors.grayVeryLight,
+            color: colors.blackNear,
+            shadow: 'none',
+            elevation: 0,
             flex: 1
           }}
         >
@@ -51,11 +48,10 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
           onClick={handleNext}
           disabled={isNextDisabled}
           style={{
-            padding: '12px 24px',
-            fontSize: '16px',
-            cursor: isNextDisabled ? 'not-allowed' : 'pointer',
+            ...buttonPrimary,
             flex: 1,
-            opacity: isNextDisabled ? 0.6 : 1
+            opacity: isNextDisabled ? 0.6 : 1,
+            cursor: isNextDisabled ? 'not-allowed' : 'pointer'
           }}
         >
           Далее

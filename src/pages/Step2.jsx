@@ -1,5 +1,38 @@
 import StepLayout from '../components/StepLayout';
 import useSabrSession from '../hooks/useSabrSession';
+import { spacing, colors, borderRadius, typography } from '../styles/theme';
+
+const textareaStyle = {
+  width: '100%',
+  padding: `${spacing.md} ${spacing.lg}`,
+  boxSizing: 'border-box',
+  borderRadius: borderRadius.md,
+  border: 'none',
+  backgroundColor: colors.grayVeryLight,
+  fontSize: typography.body.fontSize,
+  color: colors.blackNear,
+  fontFamily: 'system-ui, -apple-system, sans-serif',
+  resize: 'vertical',
+};
+
+const labelStyle = {
+  display: 'block',
+  marginBottom: spacing.sm,
+  ...typography.bodySmall,
+  color: colors.grayDark,
+};
+
+const buttonToggleBase = {
+  padding: `${spacing.sm} ${spacing.lg}`,
+  borderRadius: borderRadius.md,
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: colors.grayLight,
+  backgroundColor: colors.white,
+  color: colors.blackNear,
+  fontSize: typography.body.fontSize,
+  cursor: 'pointer',
+};
 
 export default function Step2() {
   const { session, updateStep } = useSabrSession();
@@ -20,9 +53,11 @@ export default function Step2() {
   return (
     <StepLayout currentStep={2}>
       <div>
-        <h2>Шаг 2: История за эмоцией</h2>
-        <div style={{ marginBottom: '20px' }}>
-          <label htmlFor="negativeThoughts" style={{ display: 'block', marginBottom: '8px' }}>
+        <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
+          Шаг 2: История за эмоцией
+        </h2>
+        <div style={{ marginBottom: spacing.lg }}>
+          <label htmlFor="negativeThoughts" style={labelStyle}>
             Негативные мысли в голове
           </label>
           <textarea
@@ -30,19 +65,13 @@ export default function Step2() {
             value={negativeThoughts}
             onChange={handleNegativeThoughtsChange}
             rows={4}
-            style={{
-              width: '100%',
-              padding: '8px',
-              boxSizing: 'border-box',
-              borderRadius: '4px',
-              border: '1px solid #ccc'
-            }}
+            style={textareaStyle}
             placeholder="Опишите, что крутится в голове..."
           />
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
-          <label htmlFor="whoBecome" style={{ display: 'block', marginBottom: '8px' }}>
+        <div style={{ marginBottom: spacing.lg }}>
+          <label htmlFor="whoBecome" style={labelStyle}>
             Кем я становлюсь с этими мыслями?
           </label>
           <textarea
@@ -50,20 +79,16 @@ export default function Step2() {
             value={whoBecome}
             onChange={handleWhoBecomeChange}
             rows={4}
-            style={{
-              width: '100%',
-              padding: '8px',
-              boxSizing: 'border-box',
-              borderRadius: '4px',
-              border: '1px solid #ccc'
-            }}
+            style={textareaStyle}
             placeholder="Как эти мысли влияют на вас? Кем вы становитесь?"
           />
         </div>
 
         <div>
-          <p style={{ marginBottom: '10px' }}>Эти мысли всегда правда?</p>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
+            Эти мысли всегда правда?
+          </p>
+          <div style={{ display: 'flex', gap: spacing.sm, flexWrap: 'wrap' }}>
             {['Да', 'Может быть', 'Нет'].map(option => {
               const value = option === 'Да' ? 'yes' : option === 'Может быть' ? 'maybe' : 'no';
               const isActive = thoughtsTruth === value;
@@ -72,12 +97,8 @@ export default function Step2() {
                   key={option}
                   onClick={() => handleTruthSelect(value)}
                   style={{
-                    padding: '10px 20px',
-                    borderRadius: '4px',
-                    border: isActive ? '2px solid #2196F3' : '1px solid #ccc',
-                    backgroundColor: isActive ? '#E3F2FD' : 'white',
-                    cursor: 'pointer',
-                    fontSize: '16px'
+                    ...buttonToggleBase,
+                    ...(isActive ? { borderWidth: 2, borderColor: colors.primary, backgroundColor: colors.primaryVeryLight } : {})
                   }}
                 >
                   {option}

@@ -1,12 +1,14 @@
 import React from 'react';
+import { colors, spacing, borderRadius } from '../styles/theme';
 
 export default function ProgressBar({ currentStep, totalSteps = 6 }) {
   return (
     <div style={{
       display: 'flex',
       justifyContent: 'center',
-      gap: '8px',
-      marginBottom: '20px'
+      alignItems: 'center',
+      gap: spacing.xs,
+      marginBottom: spacing.lg
     }}>
       {Array.from({ length: totalSteps }, (_, index) => {
         const stepNum = index + 1;
@@ -17,12 +19,11 @@ export default function ProgressBar({ currentStep, totalSteps = 6 }) {
             key={stepNum}
             title={`Шаг ${stepNum}`}
             style={{
-              width: '12px',
-              height: '12px',
-              borderRadius: '50%',
-              backgroundColor: isCompleted ? '#4CAF50' : isCurrent ? '#2196F3' : '#ccc',
-              border: isCurrent ? '2px solid #1976D2' : 'none',
-              transition: 'background-color 0.3s'
+              width: isCurrent ? 24 : 12,
+              height: 12,
+              borderRadius: 6,
+              backgroundColor: isCompleted ? colors.secondary : isCurrent ? colors.primary : colors.grayLight,
+              transition: 'background-color 0.3s ease'
             }}
           />
         );

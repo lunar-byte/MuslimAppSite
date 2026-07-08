@@ -1,5 +1,6 @@
 import StepLayout from '../components/StepLayout';
 import useSabrSession from '../hooks/useSabrSession';
+import { spacing, colors, borderRadius, typography } from '../styles/theme';
 
 const EMOTIONS = [
   'Подавлен',
@@ -13,6 +14,26 @@ const EMOTIONS = [
   'Беспомощность',
   'Растерян'
 ];
+
+const textareaStyle = {
+  width: '100%',
+  padding: `${spacing.md} ${spacing.lg}`,
+  boxSizing: 'border-box',
+  borderRadius: borderRadius.md,
+  border: 'none',
+  backgroundColor: colors.grayVeryLight,
+  fontSize: typography.body.fontSize,
+  color: colors.blackNear,
+  fontFamily: 'system-ui, -apple-system, sans-serif',
+  resize: 'vertical',
+};
+
+const labelStyle = {
+  display: 'block',
+  marginBottom: spacing.sm,
+  ...typography.bodySmall,
+  color: colors.grayDark,
+};
 
 export default function Step1() {
   const { session, updateStep } = useSabrSession();
@@ -44,9 +65,11 @@ export default function Step1() {
   return (
     <StepLayout currentStep={1} isNextDisabled={isNextDisabled}>
       <div>
-        <h2>Шаг 1: Триггер и эмоции</h2>
-        <div style={{ marginBottom: '20px' }}>
-          <label htmlFor="trigger" style={{ display: 'block', marginBottom: '8px' }}>
+        <h2 style={{ ...typography.subheading, color: colors.blackNear, marginBottom: spacing.lg }}>
+          Шаг 1: Триггер и эмоции
+        </h2>
+        <div style={{ marginBottom: spacing.lg }}>
+          <label htmlFor="trigger" style={labelStyle}>
             Что произошло?
           </label>
           <textarea
@@ -54,43 +77,39 @@ export default function Step1() {
             value={trigger}
             onChange={handleTriggerChange}
             rows={3}
-            style={{
-              width: '100%',
-              padding: '8px',
-              boxSizing: 'border-box',
-              borderRadius: '4px',
-              border: '1px solid #ccc'
-            }}
+            style={textareaStyle}
             placeholder="Опишите ситуацию..."
           />
         </div>
 
         <div>
-          <p style={{ marginBottom: '10px' }}>Какие эмоции вы чувствуете?</p>
+          <p style={{ marginBottom: spacing.sm, ...typography.bodySmall, color: colors.grayDark }}>
+            Какие эмоции вы чувствуете?
+          </p>
           {EMOTIONS.map(emotion => {
             const isSelected = emotions.some(e => e.name === emotion);
             const emotionObj = emotions.find(e => e.name === emotion);
             return (
-              <div key={emotion} style={{ marginBottom: '8px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div key={emotion} style={{ marginBottom: spacing.xs }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: spacing.xs }}>
                   <input
                     type="checkbox"
                     checked={isSelected}
                     onChange={() => toggleEmotion(emotion)}
                   />
-                  <span>{emotion}</span>
+                  <span style={{ ...typography.body, color: colors.blackNear }}>{emotion}</span>
                 </label>
                 {isSelected && (
-                  <div style={{ marginLeft: '24px', marginTop: '4px' }}>
+                  <div style={{ marginLeft: spacing.lg, marginTop: spacing.xs, display: 'flex', alignItems: 'center', gap: spacing.sm }}>
                     <input
                       type="range"
                       min="1"
                       max="10"
                       value={emotionObj.intensity}
                       onChange={(e) => updateIntensity(emotion, parseInt(e.target.value))}
-                      style={{ width: '200px' }}
+                      style={{ flex: 1 }}
                     />
-                    <span style={{ marginLeft: '8px' }}>{emotionObj.intensity}</span>
+                    <span style={{ ...typography.bodySmall, color: colors.grayDark }}>{emotionObj.intensity}</span>
                   </div>
                 )}
               </div>
