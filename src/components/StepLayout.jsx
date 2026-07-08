@@ -1,15 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
-import { container, buttonPrimary, colors, spacing } from '../styles/theme';
+import { container, buttonPrimary, colors, spacing, borderRadius } from '../styles/theme';
 
 export default function StepLayout({ currentStep, children, isNextDisabled = false, onNext }) {
   const navigate = useNavigate();
 
   const handleNext = () => {
     if (onNext) {
-      const shouldContinue = onNext();
-      if (shouldContinue === false) return;
+      if (onNext() === false) return;
     }
     if (currentStep < 6) {
       navigate(`/step/${currentStep + 1}`);
@@ -22,6 +21,18 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
     navigate(-1);
   };
 
+  const backButtonStyle = {
+    flex: 1,
+    padding: `${spacing.md} ${spacing.lg}`,
+    borderRadius: borderRadius.xxxl,
+    backgroundColor: colors.grayVeryLight,
+    color: colors.blackNear,
+    fontSize: 16,
+    fontWeight: 500,
+    border: 'none',
+    cursor: 'pointer',
+  };
+
   return (
     <div style={container}>
       <ProgressBar currentStep={currentStep} totalSteps={6} />
@@ -31,17 +42,7 @@ export default function StepLayout({ currentStep, children, isNextDisabled = fal
         justifyContent: 'space-between',
         gap: spacing.md
       }}>
-        <button
-          onClick={handleBack}
-          style={{
-            ...buttonPrimary,
-            backgroundColor: colors.grayVeryLight,
-            color: colors.blackNear,
-            shadow: 'none',
-            elevation: 0,
-            flex: 1
-          }}
-        >
+        <button onClick={handleBack} style={backButtonStyle}>
           Назад
         </button>
         <button

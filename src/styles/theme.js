@@ -1,5 +1,5 @@
 // Design system tokens for Sabr PWA
-// Based on STYLE.md
+// Based on STYLE.md (adapted for web)
 
 export const colors = {
   // Primary
@@ -87,50 +87,40 @@ export const typography = {
 
 export const shadows = {
   primaryButton: {
-    shadowColor: '#2E8B57',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 12,
-    elevation: 6,
+    boxShadow: '0 4px 12px rgba(46, 139, 87, 0.3)',
   },
   card: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 6,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
   },
   modal: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 8,
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
   },
 };
 
-// Reusable component styles
+// Reusable component styles (web-compatible)
 export const buttonPrimary = {
   backgroundColor: colors.primary,
-  paddingVertical: spacing.md,
-  paddingHorizontal: spacing.xxl,
+  padding: `${spacing.md} ${spacing.xxl}`,
   borderRadius: borderRadius.xxxl,
   color: colors.white,
   fontSize: 16,
   fontWeight: 600,
   ...shadows.primaryButton,
+  border: 'none',
+  cursor: 'pointer',
 };
 
 export const buttonSecondary = {
   backgroundColor: colors.primaryVeryLight,
   borderWidth: 1,
+  borderStyle: 'solid',
   borderColor: colors.primary,
-  paddingVertical: spacing.sm,
-  paddingHorizontal: spacing.lg,
+  padding: `${spacing.sm} ${spacing.lg}`,
   borderRadius: borderRadius.xl,
   color: colors.primary,
   fontSize: 16,
   fontWeight: 500,
+  cursor: 'pointer',
 };
 
 export const inputContainer = {
@@ -138,8 +128,7 @@ export const inputContainer = {
   alignItems: 'center',
   backgroundColor: colors.grayVeryLight,
   borderRadius: borderRadius.md,
-  paddingHorizontal: spacing.lg,
-  paddingVertical: spacing.md,
+  padding: `${spacing.md} ${spacing.lg}`,
   gap: spacing.md,
 };
 
