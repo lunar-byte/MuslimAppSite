@@ -17,7 +17,7 @@ const EMOTIONS = [
 
 const textareaStyle = {
   width: '100%',
-  padding: `${spacing.md} ${spacing.lg}`,
+  padding: `${spacing.md}px ${spacing.lg}px`,
   boxSizing: 'border-box',
   borderRadius: borderRadius.md,
   border: 'none',

@@ -1,19 +1,13 @@
-// Design system tokens for Sabr PWA
-// Based on STYLE.md (adapted for web)
+// Design system tokens for Sabr PWA (web-compatible)
 
 export const colors = {
-  // Primary
   primary: '#2E8B57',
   primaryLight: '#4fad67',
   primaryDark: '#236857',
   primaryVeryLight: '#F0F9F4',
-
-  // Secondary
   secondary: '#4CAF50',
   pillBackground: 'rgba(119, 168, 141, 0.15)',
   pillActiveBackground: 'rgba(46, 139, 87, 0.3)',
-
-  // Neutral
   blackNear: '#1A1A1A',
   grayDark: '#666666',
   grayMedium: '#999999',
@@ -21,8 +15,6 @@ export const colors = {
   grayVeryLight: '#F5F7FA',
   grayExtraLight: '#F9F9F9',
   white: '#FFFFFF',
-
-  // State
   disabled: '#A5A5A5',
   inactiveIcon: 'rgba(0,0,0,0.4)',
 };
@@ -48,59 +40,24 @@ export const borderRadius = {
 };
 
 export const typography = {
-  display: {
-    fontSize: 28,
-    fontWeight: 700,
-    lineHeight: 34,
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: 700,
-    lineHeight: 30,
-  },
-  subheading: {
-    fontSize: 18,
-    fontWeight: 600,
-    lineHeight: 24,
-  },
-  bodyLarge: {
-    fontSize: 18,
-    fontWeight: 500,
-    lineHeight: 24,
-  },
-  body: {
-    fontSize: 16,
-    fontWeight: 500,
-    lineHeight: 24,
-  },
-  bodySmall: {
-    fontSize: 14,
-    fontWeight: 500,
-    lineHeight: 20,
-  },
-  caption: {
-    fontSize: 12,
-    fontWeight: 500,
-    lineHeight: 16,
-  },
+  display: { fontSize: 28, fontWeight: 700, lineHeight: 34 },
+  heading: { fontSize: 24, fontWeight: 700, lineHeight: 30 },
+  subheading: { fontSize: 18, fontWeight: 600, lineHeight: 24 },
+  bodyLarge: { fontSize: 18, fontWeight: 500, lineHeight: 24 },
+  body: { fontSize: 16, fontWeight: 500, lineHeight: 24 },
+  bodySmall: { fontSize: 14, fontWeight: 500, lineHeight: 20 },
+  caption: { fontSize: 12, fontWeight: 500, lineHeight: 16 },
 };
 
 export const shadows = {
-  primaryButton: {
-    boxShadow: '0 4px 12px rgba(46, 139, 87, 0.3)',
-  },
-  card: {
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
-  },
-  modal: {
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-  },
+  primaryButton: { boxShadow: '0 4px 12px rgba(46, 139, 87, 0.3)' },
+  card: { boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)' },
+  modal: { boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)' },
 };
 
-// Reusable component styles (web-compatible)
 export const buttonPrimary = {
   backgroundColor: colors.primary,
-  padding: `${spacing.md} ${spacing.xxl}`,
+  padding: `${spacing.md}px ${spacing.xxl}px`,
   borderRadius: borderRadius.xxxl,
   color: colors.white,
   fontSize: 16,
@@ -115,7 +72,7 @@ export const buttonSecondary = {
   borderWidth: 1,
   borderStyle: 'solid',
   borderColor: colors.primary,
-  padding: `${spacing.sm} ${spacing.lg}`,
+  padding: `${spacing.sm}px ${spacing.lg}px`,
   borderRadius: borderRadius.xl,
   color: colors.primary,
   fontSize: 16,
@@ -128,7 +85,7 @@ export const inputContainer = {
   alignItems: 'center',
   backgroundColor: colors.grayVeryLight,
   borderRadius: borderRadius.md,
-  padding: `${spacing.md} ${spacing.lg}`,
+  padding: `${spacing.md}px ${spacing.lg}px`,
   gap: spacing.md,
 };
 
