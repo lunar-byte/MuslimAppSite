@@ -1,5 +1,9 @@
 // Design system tokens for Sabr PWA (web-compatible)
 
+export const baseFont = {
+  fontFamily: "'Roboto', sans-serif"
+};
+
 export const colors = {
   primary: '#2E8B57',
   primaryLight: '#4fad67',
@@ -40,13 +44,13 @@ export const borderRadius = {
 };
 
 export const typography = {
-  display: { fontSize: 28, fontWeight: 700, lineHeight: 1 },
-  heading: { fontSize: 24, fontWeight: 700, lineHeight: 1 },
-  subheading: { fontSize: 18, fontWeight: 600, lineHeight: 1 },
-  bodyLarge: { fontSize: 18, fontWeight: 500, lineHeight: 1 },
-  body: { fontSize: 16, fontWeight: 500, lineHeight: 1 },
-  bodySmall: { fontSize: 14, fontWeight: 500, lineHeight: 1 },
-  caption: { fontSize: 12, fontWeight: 500, lineHeight: 1 },
+  display: { fontSize: 28, fontWeight: 700, lineHeight: 1, ...baseFont },
+  heading: { fontSize: 24, fontWeight: 700, lineHeight: 1, ...baseFont },
+  subheading: { fontSize: 18, fontWeight: 600, lineHeight: 1, ...baseFont },
+  bodyLarge: { fontSize: 18, fontWeight: 500, lineHeight: 1, ...baseFont },
+  body: { fontSize: 16, fontWeight: 500, lineHeight: 1, ...baseFont },
+  bodySmall: { fontSize: 14, fontWeight: 500, lineHeight: 1, ...baseFont },
+  caption: { fontSize: 12, fontWeight: 500, lineHeight: 1, ...baseFont },
 };
 
 export const shadows = {
@@ -65,6 +69,7 @@ export const buttonPrimary = {
   ...shadows.primaryButton,
   border: 'none',
   cursor: 'pointer',
+  ...baseFont,
 };
 
 export const buttonSecondary = {
@@ -78,6 +83,7 @@ export const buttonSecondary = {
   fontSize: 16,
   fontWeight: 500,
   cursor: 'pointer',
+  ...baseFont,
 };
 
 export const inputContainer = {
@@ -87,6 +93,7 @@ export const inputContainer = {
   borderRadius: borderRadius.md,
   padding: `${spacing.md}px ${spacing.lg}px`,
   gap: spacing.md,
+  ...baseFont,
 };
 
 export const card = {
@@ -94,6 +101,7 @@ export const card = {
   borderRadius: borderRadius.lg,
   padding: spacing.lg,
   ...shadows.card,
+  ...baseFont,
 };
 
 export const container = {
@@ -102,4 +110,5 @@ export const container = {
   margin: '0 auto',
   minHeight: '100vh',
   boxSizing: 'border-box',
+  ...baseFont,
 };
