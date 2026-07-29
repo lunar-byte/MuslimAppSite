@@ -38,10 +38,10 @@ export default function SabrIntro() {
       {/* Заголовок WAQTI APP */}
       <div style={{ marginBottom: spacing.xxxl, maxWidth: 500 }}>
         <h1 style={{ ...typography.heading, color: colors.primary, fontSize: '2.5rem', marginBottom: spacing.md }}>
-          WAQTI APP
+          HIMMA APP
         </h1>
         <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg }}>
-          Waqti app is an application for Muslims who want to remain productive in both their worldly and spiritual lives.
+          Himma app is an application for Muslims who want to remain productive in both their worldly and spiritual lives.
         </p>
         <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg, fontStyle: 'italic' }}>
           The project is currently in development. We need your help—we need to raise $1,000 for the app's release and marketing. We have already raised $543!
