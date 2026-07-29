@@ -73,6 +73,15 @@ export default function SabrIntro() {
           </p>
         </div>
 
+        {/* Кнопка поддержки */}
+        <a
+          href="https://dalink.to/leenar"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ ...buttonPrimary, display: 'inline-block', textDecoration: 'none', marginBottom: spacing.lg }}
+        >
+          Поддержать проект
+        </a>
         <p style={{ ...typography.body, color: colors.blackNear, fontWeight: 'bold' }}>
           А пока можете использовать часть приложения бесплатно:
         </p>
