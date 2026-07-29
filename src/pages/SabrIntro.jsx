@@ -37,16 +37,14 @@ export default function SabrIntro() {
 
       {/* Заголовок WAQTI APP */}
       <div style={{ marginBottom: spacing.xl, maxWidth: 500 }}>
-        <h1 style={{ ...typography.heading, color: colors.blackNear, fontSize: '2.5rem', marginBottom: spacing.md }}>
+        <h1 style={{ ...typography.heading, color: colors.primary, fontSize: '2.5rem', marginBottom: spacing.md }}>
           WAQTI APP
         </h1>
         <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg }}>
-          Waqti app — это приложение для мусульман, которые хотят оставаться продуктивными
-          и в земной, и в духовной жизни.
+          Waqti app is an application for Muslims who want to remain productive in both their worldly and spiritual lives.
         </p>
         <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg, fontStyle: 'italic' }}>
-          Проект находится в разработке. Нужна ваша помощь — необходимо собрать $1000
-          на выпуск приложения и маркетинг. Уже собрано $543!
+          Проект находится в разработке. Нужна ваша помощь — необходимо собрать $1000 на выпуск приложения и маркетинг. Уже собрано $543!
         </p>
 
         {/* Прогресс-бар */}
@@ -64,7 +62,7 @@ export default function SabrIntro() {
               style={{
                 width: `${progressPercent}%`,
                 height: '100%',
-                backgroundColor: colors.blackNear,
+                backgroundColor: colors.primary,
                 borderRadius: 8,
                 transition: 'width 0.5s ease',
               }}
