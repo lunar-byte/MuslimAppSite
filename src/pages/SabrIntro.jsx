@@ -44,7 +44,7 @@ export default function SabrIntro() {
           Waqti app is an application for Muslims who want to remain productive in both their worldly and spiritual lives.
         </p>
         <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg, fontStyle: 'italic' }}>
-          Проект находится в разработке. Нужна ваша помощь — необходимо собрать $1000 на выпуск приложения и маркетинг. Уже собрано $543!
+          The project is currently in development. We need your help—we need to raise $1,000 for the app's release and marketing. We have already raised $543!
         </p>
 
         {/* Прогресс-бар */}
@@ -69,7 +69,7 @@ export default function SabrIntro() {
             />
           </div>
           <p style={{ ...typography.body, color: colors.blackNear, marginTop: spacing.sm, fontSize: '0.9rem' }}>
-            ${raisedAmount} собрано из ${goalAmount} ({Math.round(progressPercent)}%)
+            ${raisedAmount} raised $543 ${goalAmount} ({Math.round(progressPercent)}%)
           </p>
         </div>
 
