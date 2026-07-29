@@ -26,11 +26,61 @@ export default function SabrIntro() {
     alignItems: 'center',
     textAlign: 'center',
   };
+
+  const goalAmount = 1000;
+  const raisedAmount = 543;
+  const progressPercent = Math.min((raisedAmount / goalAmount) * 100, 100);
+
   return (
-    
     <div style={{ ...container, ...wrapperStyle }}>
       {showOverlay && <PWAInstallOverlay onClose={handleOverlayClose} />}
-      <div style={{marginTop: -100,}}><h1>Choose your practice</h1></div>
+
+      {/* Заголовок WAQTI APP */}
+      <div style={{ marginBottom: spacing.xl, maxWidth: 500 }}>
+        <h1 style={{ ...typography.heading, color: colors.blackNear, fontSize: '2.5rem', marginBottom: spacing.md }}>
+          WAQTI APP
+        </h1>
+        <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg }}>
+          Waqti app — это приложение для мусульман, которые хотят оставаться продуктивными
+          и в земной, и в духовной жизни.
+        </p>
+        <p style={{ ...typography.body, color: colors.blackNear, marginBottom: spacing.lg, fontStyle: 'italic' }}>
+          Проект находится в разработке. Нужна ваша помощь — необходимо собрать $1000
+          на выпуск приложения и маркетинг. Уже собрано $543!
+        </p>
+
+        {/* Прогресс-бар */}
+        <div style={{ width: '100%', marginBottom: spacing.lg }}>
+          <div
+            style={{
+              width: '100%',
+              height: 16,
+              backgroundColor: '#e0e0e0',
+              borderRadius: 8,
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                width: `${progressPercent}%`,
+                height: '100%',
+                backgroundColor: colors.blackNear,
+                borderRadius: 8,
+                transition: 'width 0.5s ease',
+              }}
+            />
+          </div>
+          <p style={{ ...typography.body, color: colors.blackNear, marginTop: spacing.sm, fontSize: '0.9rem' }}>
+            ${raisedAmount} собрано из ${goalAmount} ({Math.round(progressPercent)}%)
+          </p>
+        </div>
+
+        <p style={{ ...typography.body, color: colors.blackNear, fontWeight: 'bold' }}>
+          А пока можете использовать часть приложения бесплатно:
+        </p>
+      </div>
+
+      {/* Существующий контент без изменений */}
       <div style={{ display: 'flex', flexDirection: 'row', gap: spacing.xxl, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{ ...typography.heading, color: colors.blackNear, marginBottom: spacing.xxl }}>
