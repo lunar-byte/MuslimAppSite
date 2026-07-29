@@ -15,6 +15,7 @@ import IStep3 from './pages/istikharah/IStep3';
 import IStep4 from './pages/istikharah/IStep4';
 import IStep5 from './pages/istikharah/IStep5';
 import IstikharahComplete from './pages/istikharah/IstikharahComplete';
+import About from './pages/About';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <Route path="/istikharah/step/3" element={<IStep3 />} />
       <Route path="/istikharah/step/4" element={<IStep4 />} />
       <Route path="/istikharah/step/5" element={<IStep5 />} />
+      <Route path="/about" element={<About />} />
       <Route path="/istikharah/complete" element={<IstikharahComplete />} />
     </Routes>
   );

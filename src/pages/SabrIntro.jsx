@@ -36,7 +36,7 @@ export default function SabrIntro() {
       {showOverlay && <PWAInstallOverlay onClose={handleOverlayClose} />}
 
       {/* Заголовок WAQTI APP */}
-      <div style={{ marginBottom: spacing.xl, maxWidth: 500 }}>
+      <div style={{ marginBottom: spacing.xxxl, maxWidth: 500 }}>
         <h1 style={{ ...typography.heading, color: colors.primary, fontSize: '2.5rem', marginBottom: spacing.md }}>
           WAQTI APP
         </h1>
@@ -69,26 +69,35 @@ export default function SabrIntro() {
             />
           </div>
           <p style={{ ...typography.body, color: colors.blackNear, marginTop: spacing.sm, fontSize: '0.9rem' }}>
-            ${raisedAmount} raised $543 ${goalAmount} ({Math.round(progressPercent)}%)
+            ${raisedAmount} raised of ${goalAmount} ({Math.round(progressPercent)}%)
           </p>
         </div>
 
-        {/* Кнопка поддержки */}
-        <a
-          href="https://dalink.to/leenar"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ ...buttonPrimary, display: 'inline-block', textDecoration: 'none', marginBottom: spacing.lg }}
-        >
-          Поддержать проект
-        </a>
-        <p style={{ ...typography.body, color: colors.blackNear, fontWeight: 'bold' }}>
-          А пока можете использовать часть приложения бесплатно:
-        </p>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: spacing.xxl, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* Кнопка поддержки — теперь тоже <button>, для одинакового box-model */}
+            <button
+              onClick={() => window.open('https://dalink.to/leenar', '_blank', 'noopener,noreferrer')}
+              style={buttonPrimary}
+            >
+              Help project
+            </button>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <button onClick={() => navigate('/about')} style={buttonPrimary}>
+              About app
+            </button>
+          </div>
+        </div>
+
       </div>
 
       {/* Существующий контент без изменений */}
       <div style={{ display: 'flex', flexDirection: 'row', gap: spacing.xxl, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+        
+        <p style={{ ...typography.body, color: colors.blackNear, fontWeight: 'bold' }}>
+          In the meantime, you can use part of the app for free:
+        </p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{ ...typography.heading, color: colors.blackNear, marginBottom: spacing.xxl }}>
             Sabr
